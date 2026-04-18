@@ -1,0 +1,327 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+html,body,#root{
+  width:100%;
+  background-color: #111;
+  height:100%;
+  color:whitesmoke;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+section{
+  min-height:100vh;
+  position:relative;
+  z-index: 2;
+}
+#canvas-elem::after{
+  content:"";
+  height:100%;
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:-1;
+  background-image: url(/modals/background-m.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.3 linear;
+}
+#section-1{
+  --gap: 7rem;
+  position:relative;
+
+  nav{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 0.5rem 0.7rem;
+    padding-top:3rem;
+
+    #showReel i{
+      color:red;
+    }
+
+    svg{
+      max-width: 7rem;
+      width:100%;
+      height:100%;
+    }
+  }
+
+  .middle{
+    display: flex;
+    gap:var(--gap);
+
+    .left,
+    .right{
+      width:50%;
+    }
+    .left{
+      display: flex;
+      align-items:center;
+      justify-content:flex-end;
+     /* //padding-block apply vertically */
+      padding-block:6rem; 
+    }
+    h1{
+      font-size:7.5rem;
+      letter-spacing:-3px;
+      line-height: 0.9;
+      text-align: right;
+    }
+  }
+
+  .bottom{
+    display:flex;
+    gap:var(--gap);
+
+    .left,
+    .right{
+      width:50%;
+    }
+
+    .right {
+      p{
+        font-weight:300;
+        line-height:1.5;
+      }
+    }
+
+  }
+
+  .first-line{
+    position:absolute;
+    height:1px;
+    width:25rem;
+    background-color: rgb(180, 33, 33);
+    transform: rotate(45deg) translate(-8.5rem,-15rem)
+  }
+  .second-line{
+    position:absolute;
+    height:1px;
+    width:10rem;
+    background-color: rgb(180, 33, 33);
+    transform: rotate(135deg);
+    top:28%;
+    right:12%;
+
+  }
+}
+#section-2{
+  .titles{
+    display:flex;
+    flex-direction:column;
+    padding-left:5rem;
+    margin-block:8rem;
+
+
+    .title{
+      display:flex;
+      gap: 4rem;
+      opacity:0.5;
+      padding-block: 1rem;
+
+      h1{
+        font-weight:300;
+        font-size: 5rem;
+        line-height:1
+      }
+
+      small{
+        margin-top:0.9rem;
+      }
+    }
+    .title:hover{
+      opacity:1;
+      cursor:pointer;
+    }
+  }
+}
+#section-3{
+  padding-top: 10rem;
+  padding-inline:10rem;
+  position:absolute;
+  z-index: 0;
+  isolation: isolate;
+  min-height:initial;
+  
+
+  .top,
+  .bottom{
+    display: flex;
+    width:100%;
+    gap:6rem;
+  }
+  .left,
+  .right{
+    width:50%;
+  }
+  .top .left{
+    padding-left: 2rem;
+    padding-bottom: 8rem;
+
+    h3{
+      font-size:2rem;
+      font-weight: 100;
+      opacity:0.6;
+    }
+  }
+  .bottom .right{
+    display:flex;
+
+    p{
+      opacity:0.5;
+      font-weight: 200;
+      font-size:0.8rem;
+      position:relative;
+      z-index: 4;
+    }
+  }
+}
+#section-4{
+  padding-inline:10rem;
+  min-height: 50vh;
+
+  
+  .bottom{
+    display: flex;
+    width:100%;
+    gap:6rem;
+  }
+
+  .left,
+  .right{
+    width:50%;
+  }
+  .top .left{
+    /* padding-right:20rem; */
+
+    h3{
+      font-size:2.5rem;
+      font-weight: 100;
+      opacity:0.6;
+    }
+  }
+  .bottom .right{
+    display:flex;
+    padding-top:20rem;
+
+    p{
+      opacity:0.5;
+      font-weight: 200;
+      font-size:0.8rem;
+      position:relative;
+      z-index: 4;
+    }
+  }
+}
+
+#section-last{
+  min-height:60vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0),
+    rgb(27, 27, 27) 40%
+  );
+  position:relative;
+  z-index:10;
+  display:flex;
+  flex-direction:column;
+  
+}
+.headings{
+  display:flex;
+  padding-top:12rem;
+  padding-left:11rem; 
+  gap:9rem;
+
+}
+.headings h4{
+  font-size: 20px;
+  font-weight:200;
+  letter-spacing: 1.5px;
+}
+.last-line{
+  display:flex;
+  margin-top:5.5rem;
+  width:80%;
+  height:1px;
+  background-color: rgba(255,255,255,0.4);
+  margin-left:11rem;
+  opacity:0.5;
+  margin-bottom:1.5rem;
+}
+.footerContent{
+  padding-left: 11rem;
+  display:flex;
+}
+.footerContent p{
+  font-size:11px;
+  color:rgb(136, 112, 158);
+  font-weight: bold
+}
+.footerContent .line{
+  margin-top:0.5rem;
+  margin-left:0.4rem;
+  margin-right:0.4rem;
+  width: 3%;
+  height:1px;
+  background-color: rgb(99, 97, 97);
+  opacity:0.9;
+}
+.footerContent .dogstudio{
+  color:white;
+}
+
+/* this line means that if main has section-2 and .title:hover property so canvas-elem ke after pe uski opacity:0 krdo */
+main:has(#section-2 .title:hover) #canvas-elem::after {
+  opacity:0;
+}
+.images{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+
+  img{
+    height:100%;
+    width:100%;
+    object-fit: cover;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0;
+    transition: all 0.3s linear;
+  }
+}
+
+main:has(#section-2 .title[img-title="TommorrowLand"]:hover) .images #TommorrowLand{
+  opacity:1;
+  background-color: rgb(4, 3, 22);
+}
+main:has(#section-2 .title[img-title="Navy-pier"]:hover) .images #Navy-pier{
+  opacity:1;
+  background-color: rgb(6, 5, 8);
+}
+main:has(#section-2 .title[img-title="MSI-chicago"]:hover) .images #MSI-chicago{
+  opacity:1;
+  background-color: rgb(6, 5, 8);
+}
+main:has(#section-2 .title[img-title="Louise-phone"]:hover) .images #Louise-phone{
+  opacity:1;
+  background-color: rgb(6, 5, 8);
+}
+main:has(#section-2 .title[img-title="KIKI"]:hover) .images #KIKI{
+  opacity:1;
+  background-color: rgb(6, 5, 8);
+}
+main:has(#section-2 .title[img-title="Kennady"]:hover) .images #Kennady{
+  opacity:1;
+  background-color: rgb(6, 5, 8);
+}:has(#section-2 .title[img-title="royal-opera"]:hover) .images #royal-opera{
+  opacity:1;
+  background-color: rgb(172, 15, 15);
+}
