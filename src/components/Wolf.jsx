@@ -12,22 +12,83 @@ const Wolf = () => {
 
   gsap.registerPlugin(useGSAP())
   gsap.registerPlugin(ScrollTrigger)
+  const ambientAudioRef = useRef(null)
+  const hasStartedAmbientRef = useRef(false)
 
-    const modal =  useGLTF("/public/modals/dog.drc.glb")
+    const modal =  useGLTF("/modals/dog.drc.glb")
     useThree(({camera, scene, gl})=>{
         // console.log(camera.position);
         camera.position.z= 0.55
         //for better3D coloring beacuse webGlRenderer render weak ,fade colors not bright and strong so we use these 2 lines below
         gl.toneMapping = THREE.ReinhardToneMapping
         gl.outputColorSpace = THREE.SRGBColorSpace
-        
     })
+
+    useEffect(() => {
+      let audioStarted = false
+      const audio = new Audio("/audio/ambience_sound.mp3")
+      audio.loop = true
+      audio.preload = "auto"
+      audio.volume = 0.5
+      ambientAudioRef.current = audio
+
+      const startAudio = () => {
+        if (audioStarted || !ambientAudioRef.current) {
+          return
+        }
+
+        audioStarted = true
+        hasStartedAmbientRef.current = true
+
+        ambientAudioRef.current.play().catch((err) => {
+          console.log("Audio blocked:", err)
+        })
+
+        removeInteractionListeners()
+      }
+
+      const handleStart = () => {
+        startAudio()
+      }
+
+      const removeInteractionListeners = () => {
+        window.removeEventListener("scroll", handleStart)
+        window.removeEventListener("click", handleStart)
+        window.removeEventListener("touchstart", handleStart)
+        window.removeEventListener("keydown", handleStart)
+      }
+
+      const primeAudioOnFirstTouch = () => {
+        if (ambientAudioRef.current) {
+          ambientAudioRef.current.load()
+        }
+      }
+
+      document.body.addEventListener("touchstart", primeAudioOnFirstTouch, { once: true })
+      window.addEventListener("scroll", handleStart, { passive: true, once: true })
+      window.addEventListener("click", handleStart, { once: true })
+      window.addEventListener("touchstart", handleStart, { once: true })
+      window.addEventListener("keydown", handleStart, { once: true })
+
+      return () => {
+        removeInteractionListeners()
+        document.body.removeEventListener("touchstart", primeAudioOnFirstTouch)
+        if (ambientAudioRef.current) {
+          ambientAudioRef.current.pause()
+          ambientAudioRef.current.currentTime = 0
+          ambientAudioRef.current = null
+        }
+        hasStartedAmbientRef.current = false
+        audioStarted = false
+      }
+    }, [])
 
     //play the animation
     const {actions} = useAnimations(modal.animations,modal.scene)
     useEffect(()=>{
       actions["Take 001"].play()          //Take 001 is animation's name caught by vscode
     },[ actions ])
+
  
     // destructuring
     const[normalMap, sampleMatCap ] =(useTexture(["/modals/dog_normals.jpg","/matcap/mat-2.png",]))

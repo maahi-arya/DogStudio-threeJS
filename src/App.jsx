@@ -109,10 +109,11 @@ const App = () => {
     <section id='section-3' >
       <div className="top">
         <div className="left">
-          <h3>Lorem ipsum dolor <br />
-             sit amet <br /> 
-            consectetur adipisicing  <br />
-           possimus.</h3>
+          <h3>We're crafting <br />
+             emotional<br /> 
+            experinces aimed  <br />
+           at improving <br />
+           results </h3>
         </div>
         <div className="right"></div>
       </div>
@@ -122,7 +123,7 @@ const App = () => {
       <div className="bottom">
         <div className="left"></div>
         <div className="right">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis rem, molestiae natus, sed eos voluptatibus amet, animi placeat reprehenderit aspernatur numquam perferendis fugit voluptatem ipsam? Facilis, provident accusantium? Dolorem, unde.
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis rem, molestiae <br /> natus, sed eos voluptatibus amet, animi placeat reprehenderit aspernatur <br />numquam perferendis fugit voluptatem ipsam? Facilis, <br/>provident accusantium? Dolorem, unde.
           .</p>
         </div>
       </div>
@@ -134,9 +135,6 @@ const App = () => {
       <h4>Chicago</h4>
       <h4>Amsterdam</h4>
       <h4>Paris</h4>
-      </div>
-      <div className="tags">
-        <p>fb/ ins /dri/ tw</p>
       </div>
       
       <div className="last-line">

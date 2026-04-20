@@ -214,6 +214,7 @@ section{
       font-size:0.8rem;
       position:relative;
       z-index: 4;
+      margin-left:8rem;
     }
   }
 }
@@ -233,7 +234,7 @@ section{
 }
 .headings{
   display:flex;
-  padding-top:12rem;
+  padding-top:13rem;
   padding-left:11rem; 
   gap:9rem;
 
